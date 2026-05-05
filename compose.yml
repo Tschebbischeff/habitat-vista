@@ -1,0 +1,74 @@
+name: ${APP_NAME_HOST}
+
+networks:
+  internal:
+    name: ${APP_NAME_HOST}_internal
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+
+
+volumes:
+  habitat-config:
+  glance-config:
+  glance-assets:
+
+
+# No Secrets, Syntax Stub:
+# secrets:
+#   SECRET_NAME:
+#     file: ${SECRETS_DIR}/SECRET_NAME
+
+
+services:
+
+  habitat-config-vista:
+    image: tschebbischeff/habitat-config:latest
+    container_name: ${APP_NAME_HOST}_habitat-config-vista
+    restart: no
+    env_file:
+      - ./.env
+      - path: ${ENV_DIR}/.env
+        required: false
+      - path: ${ENV_DIR}/habitat-config.env
+        required: false
+    environment:
+      MODULE_NAME: "vista"
+    networks:
+      internal:
+    volumes:
+      - habitat-config:/habitat-config/orchestration
+      - ./habitat-config:/habitat-config/source:ro
+      - glance-config:/habitat-config/target/glance/config
+      - glance-assets:/habitat-config/target/glance/assets
+
+  glance:
+    image: glanceapp/glance:latest
+    container_name: ${APP_NAME_HOST}_glance
+    restart: always
+    expose:
+      - "8080"
+    env_file:
+      - ./.env
+      - path: ${ENV_DIR}/.env
+        required: false
+      - path: ${ENV_DIR}/glance.env
+        required: false
+    environment:
+      APP_OWNER_ATTRIBUTION: "Tschebbischeff@GitHub"
+      WIDGET_WEATHER_LOCATION: "Aachen, Germany" # TODO: Make properly configurable
+    volumes:
+      - glance-config:/app/config
+      - glance-assets:/app/assets
+    networks:
+      internal:
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "-q", "http://127.0.0.1:8080/api/healthz" ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    depends_on:
+      habitat-config-vista:
+        condition: service_completed_successfully

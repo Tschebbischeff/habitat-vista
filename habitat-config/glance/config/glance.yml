@@ -1,0 +1,97 @@
+# Documentation: https://github.com/glanceapp/glance/blob/main/docs/configuration.md
+# si-prefix icons: https://simpleicons.org/ (externally loaded!)
+# di-prefix icons: https://dashboardicons.com/
+server:
+  assets-path: /app/assets
+  proxied: true
+document:
+  head: |
+    <script src="/assets/js/iframe_on_demand.js"></script>
+branding:
+  custom-footer: |
+    <p>Copyright (c) 2026 <a href="https://github.com/Tschebbischeff">${APP_OWNER_ATTRIBUTION}</a></p>
+    <p>Powered by <a href="https://github.com/glanceapp/glance">Glance</a></p>
+  app-name: ${APP_NAME_LABEL}
+  logo-url: /assets/logo/_logo.svg
+  favicon-url: /assets/logo/_logo.svg
+  app-icon-url: /assets/logo/_logo.svg
+theme:
+  background-color: 50 1 6
+  # primary-color: 24 97 58
+  # negative-color: 209 88 54
+  # primary-color: 51 33 68
+  contrast-multiplier: 1.2
+  primary-color: 217 92 83
+  positive-color: 115 54 76
+  negative-color: 347 70 65
+  custom-css-file: /assets/css/main.css
+pages:
+  - name: Apps
+    slug: apps
+    center-vertically: true
+    columns:
+      - size: full
+        widgets:
+          - type: split-column
+            max-columns: 3
+            widgets: []
+  - name: Development
+    slug: dev
+    columns:
+      - size: small
+        widgets:
+          - type: releases
+            cache: 1d # Also see: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#token
+            show-source-icon: true
+            collapse-after: -1
+            limit: 100
+            repositories:
+              # - tschebbischeff/habitat
+              - dockerhub:glanceapp/glance:latest
+      - size: full
+        widgets:
+          - type: group
+            widgets: []
+              # - type: iframe
+              #   # source: |
+              #   #   <iframe
+              #   #     src="https://grafana.${APP_HOST}/d-solo/hardware-metrics/hardware-metrics?orgId=1&from=now-24h&to=now&timezone=browser&var-mainDisk=&var-interval=NULL&refresh=1m&tab=queries&showCategory=Legend&panelId=panel-5&__feature.dashboardScene=true"
+              #   #     sandbox="allow-forms allow-scripts allow-same-origin"
+              #   #     frameborder="0"
+              #   #     width="100%"
+              #   #     height="576"> <!-- 108 + 36 * services -->
+              #   #   </iframe>
+              #   title: 'Container Status'
+              #   source: 'https://grafana.${APP_HOST}/d-solo/hardware-metrics/hardware-metrics?orgId=1&from=now-24h&to=now&timezone=browser&var-mainDisk=&var-interval=NULL&refresh=1m&tab=queries&showCategory=Legend&panelId=panel-5&__feature.dashboardScene=true'
+              #   height: 576 # 108 + 36 * services
+              # - type: html
+              #   title: 'Camera (Outside)'
+              #   source: |
+              #     <div class="glance-lib"
+              #       data-lib-liod
+              #       data-lib-liod-src="https://mediamtx-webrtc.${APP_HOST}/cam0"
+              #       data-lib-liod-classes="aspect-ratio-16-9"
+              #     ></div>
+              # - type: html
+              #   title: 'Camera (Inside 1)'
+              #   source: |
+              #     <div class="glance-lib"
+              #       data-lib-liod
+              #       data-lib-liod-src="https://mediamtx-webrtc.${APP_HOST}/cam1"
+              #       data-lib-liod-classes="aspect-ratio-16-9"
+              #     ></div>
+              # - type: html
+              #   title: 'Camera (Inside 2)'
+              #   source: |
+              #     <div class="glance-lib"
+              #       data-lib-liod
+              #       data-lib-liod-src="https://mediamtx-webrtc.${APP_HOST}/cam2"
+              #       data-lib-liod-classes="aspect-ratio-16-9"
+              #     ></div>
+      - size: small
+        widgets:
+          - type: weather
+            location: ${WIDGET_WEATHER_LOCATION}
+            units: metric
+            hour-format: 24h
+            hide-location: true

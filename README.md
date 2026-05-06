@@ -133,6 +133,7 @@ They are expected to be files with the secret value being the content of the fil
 
  - Run `docker compose up` from the root directory of the repository or from the directory containing your `.env` file
  - Run `docker compose logs` and wait for the application to finish first-time setup and settle
+ - Visit `${APP_HOST}` to see the main dashboard
 
 ## Acknowledgments and Licensing
 

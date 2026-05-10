@@ -13,9 +13,13 @@ iframe.glance-lib-liod {
 }
 
 html[data-scheme="dark"] div.logo > img {
-    content:url("/assets/logo/logo_white.svg");
+    background: url("/assets/logo/logo_color.svg") no-repeat;
+}
+
+html[data-scheme="dark"] div.logo > img {
+    background: url("/assets/logo/logo_white.svg") no-repeat;
 }
 
 html[data-scheme="light"] div.logo > img {
-    content:url("/assets/logo/logo_black.svg");
+    background: url("/assets/logo/logo_black.svg") no-repeat;
 }

@@ -11,3 +11,11 @@ iframe.glance-lib-liod {
     width: 100%;
     border: 0;
 }
+
+html[data-scheme="dark"] div.logo > img {
+    content:url("/assets/logo/logo_white.svg");
+}
+
+html[data-scheme="light"] div.logo > img {
+    content:url("/assets/logo/logo_black.svg");
+}

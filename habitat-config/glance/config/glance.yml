@@ -12,19 +12,23 @@ branding:
     <p>Copyright (c) 2026 <a href="https://github.com/Tschebbischeff">${APP_OWNER_ATTRIBUTION}</a></p>
     <p>Powered by <a href="https://github.com/glanceapp/glance">Glance</a></p>
   app-name: ${APP_NAME_LABEL}
-  logo-url: /assets/logo/_logo.svg
-  favicon-url: /assets/logo/_logo.svg
-  app-icon-url: /assets/logo/_logo.svg
+  logo-url: /assets/logo/logo_color.svg
+  favicon-url: /assets/logo/logo_color.svg
+  app-icon-url: /assets/logo/logo_color.svg
 theme:
+  custom-css-file: /assets/css/main.css
   background-color: 50 1 6
-  # primary-color: 24 97 58
-  # negative-color: 209 88 54
-  # primary-color: 51 33 68
-  contrast-multiplier: 1.2
   primary-color: 217 92 83
   positive-color: 115 54 76
   negative-color: 347 70 65
-  custom-css-file: /assets/css/main.css
+  contrast-multiplier: 1.2
+  presets:
+    default-dark:
+      background-color: 50 1 6
+      primary-color: 217 92 83
+      positive-color: 115 54 76
+      negative-color: 347 70 65
+      contrast-multiplier: 1.2
 pages:
   - name: Apps
     slug: apps

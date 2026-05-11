@@ -45,7 +45,7 @@ Each of the modules is designed as an opinionated docker stack that can be deplo
 
 ### Requirements
 
- - [![Habitat-Module: Path](https://img.shields.io/badge/Habitat--Module-Path-_?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMjUgMjAgMTUwIDE1MCIgZmlsbD0ibm9uZSIKICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cGF0aCBkPSJNMTAwIDIwTDMwIDc1VjE3MEgxNzBWNzVMMTAwIDIwWiIgZmlsbD0iIzc3ZTE5OSIvPgoKICAgIDxwYXRoIGQ9Ik0xMDAgNjVMMTQ1IDkwVjE0MEwxMDAgMTY1TDU1IDE0MFY5MEwxMDAgNjVaIiBmaWxsPSIjMzE4MkNFIi8+CgogICAgPHBhdGggZD0iTTEwMCA2NUwxNDUgOTBMMTAwIDExNUw1NSA5MEwxMDAgNjVaIiBmaWxsPSIjNjNCM0VEIi8+CiAgICA8cGF0aCBkPSJNMTAwIDExNVYxNjVMNTUgMTQwVjkwTDEwMCAxMTVaIiBmaWxsPSIjMkI2Q0IwIi8+CgogICAgPHBhdGggZD0iTTEwMCA2NUwxNDUgOTBMMTAwIDExNUw1NSA5MEwxMDAgNjVaIiBzdHJva2U9IiM3N2UxOTkiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTEwMCAxMTVWMTY1IiBzdHJva2U9IiM3N2UxOTkiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=&logoColor=113155&logoSize=auto&color=gray&labelColor=gray)](https://github.com/Tschebbischeff/habitat-path)
+ - [![Habitat-Module: Path](https://img.shields.io/badge/Habitat--Module-Path-_?style=flat&color=gray&labelColor=gray)](https://github.com/Tschebbischeff/habitat-path)
 
 ### Configuration
 

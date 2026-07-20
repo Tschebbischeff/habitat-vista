@@ -1,0 +1,5 @@
+access_control:
+  rules:
+    - domain: 'glance.{{ env "APP_HOST" }}'
+      subject: 'group:glance_users'
+      policy: one_factor

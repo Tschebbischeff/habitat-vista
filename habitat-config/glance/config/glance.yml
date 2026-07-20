@@ -33,6 +33,24 @@ pages:
   - name: Apps
     slug: apps
     center-vertically: true
+    head-widgets:
+      - type: html
+        html: |
+          <div style="display: flex; justify-content: flex-end; width: 100%;">
+            <a href="https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2F${APP_HOST}" style="
+              display: inline-block;
+              padding: var(--widget-content-padding);
+              background-color: var(--color-widget-background);
+              color: var(--color-text-highlight);
+              text-decoration: none;
+              border: 1px solid var(--color-widget-content-border);
+              border-radius: var(--border-radius);
+              font-weight: 600;
+              font-size: var(--font-size-h3);
+            ">
+              Logout
+            </a>
+          </div>
     columns:
       - size: full
         widgets:

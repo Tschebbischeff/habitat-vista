@@ -35,7 +35,7 @@ pages:
     center-vertically: true
     head-widgets:
       - type: html
-        html: |
+        source: |
           <div style="display: flex; justify-content: flex-end; width: 100%;">
             <a href="https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2F${APP_HOST}" style="
               display: inline-block;

@@ -27,3 +27,26 @@ html[data-scheme="dark"] div.logo > img {
 html[data-scheme="light"] div.logo > img {
     background-image: url("/assets/logo/logo_black.svg");
 }
+
+div.glance-lib-usermenu {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+div.glance-lib-usermenu a {
+    display: inline-block;
+    padding: calc(var(--widget-content-vertical-padding) / 2) calc(var(--widget-content-horizontal-padding) / 2);
+    background-color: var(--color-widget-background);
+    color: var(--color-text-base);
+    text-decoration: none;
+    border: 1px solid var(--color-widget-content-border);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: var(--font-size-h3);
+}
+
+div.glance-lib-usermenu a:hover {
+    color: var(--color-text-highlight);
+    border-color: var(--color-text-subdue);
+}

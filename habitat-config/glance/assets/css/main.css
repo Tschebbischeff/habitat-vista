@@ -31,10 +31,10 @@ html[data-scheme="light"] div.logo > img {
 div.glance-lib-usermenu {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    gap: var(--header-items-gap);
 }
 
-div.glance-lib-usermenu a {
+/*div.glance-lib-usermenu a {
     display: inline-block;
     padding: calc(var(--widget-content-vertical-padding) / 2) calc(var(--widget-content-horizontal-padding) / 2);
     background-color: var(--color-widget-background);
@@ -44,9 +44,19 @@ div.glance-lib-usermenu a {
     border-radius: var(--border-radius);
     font-weight: 600;
     font-size: var(--font-size-h3);
+}*/
+
+div.glance-lib-usermenu a {
+    display: block;
+    height: 100%;
+    border-bottom: 2px solid transparent;
+    transition: color .3s, border-color .3s;
+    font-size: var(--font-size-h3);
+    flex-shrink: 0;
+    line-height: var(--header-height);
 }
 
 div.glance-lib-usermenu a:hover {
+    border-bottom-color: var(--color-text-subdue);
     color: var(--color-text-highlight);
-    border-color: var(--color-text-subdue);
 }

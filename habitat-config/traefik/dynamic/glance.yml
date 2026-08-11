@@ -9,6 +9,15 @@ http:
         servers:
           - url: 'http://{{ env "APP_NAME_HOST" }}_glance:8080'
   routers:
+    glance-8080-pwa:
+      rule: 'Host(`{{ env "APP_HOST" }}`) && (Path(`/manifest.json`) || PathPrefix(`/assets/logo/`))'
+      service: svc_glance-8080
+      entryPoints: ["websecure"]
+      priority: 100
+      middlewares:
+        - "cors-policy"
+      tls:
+        certResolver: porkbun-api
     glance-8080:
       rule: 'Host(`{{ env "APP_HOST" }}`)'
       service: svc_glance-8080

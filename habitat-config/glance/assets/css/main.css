@@ -33,13 +33,7 @@ div.glance-lib-usermenu {
     justify-content: flex-end;
 }
 
-div.glance-lib-usermenu-mobile {
-    display: flex;
-    justify-content: flex-start;
-    gap: var(--header-items-gap);
-}
-
-div.glance-lib-usermenu a, div.glance-lib-usermenu-mobile a {
+div.glance-lib-usermenu a {
     display: block;
     height: 100%;
     border-bottom: 2px solid transparent;
@@ -49,7 +43,22 @@ div.glance-lib-usermenu a, div.glance-lib-usermenu-mobile a {
     line-height: var(--header-height);
 }
 
-div.glance-lib-usermenu a:hover, div.glance-lib-usermenu-mobile a:hover {
+div.glance-lib-usermenu a:hover {
     border-bottom-color: var(--color-text-subdue);
     color: var(--color-text-highlight);
+}
+
+div.glance-lib-usermenu-mobile {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--header-items-gap);
+}
+
+div.glance-lib-usermenu-mobile a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-size: var(--font-size-h3);
+    flex-shrink: 0;
+    line-height: var(--header-height);
 }

@@ -18,7 +18,7 @@ branding:
   logo-url: /assets/logo/logo_transparent.svg
   favicon-url: /assets/logo/logo_color.svg
   app-name: ${APP_NAME_LABEL}
-  app-icon-url: /assets/logo/logo_color_maskable_512.png
+  app-icon-url: /assets/logo/logo_color_512.png
 theme:
   custom-css-file: /assets/css/main.css
   background-color: 50 1 6

@@ -1,5 +1,10 @@
 access_control:
   rules:
     - domain: '{{ env "APP_HOST" }}'
+      resources:
+        - "^/manifest.json$"
+        - "^/assets/logo/.*$"
+      policy: bypass
+    - domain: '{{ env "APP_HOST" }}'
       subject: 'group:glance_users'
       policy: one_factor

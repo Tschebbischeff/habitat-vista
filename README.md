@@ -24,7 +24,8 @@ You can check out all officially available modules [here](https://github.com/Tsc
  Simple but elegant Glance-powered dashboard with the most important links and information
 
 ### Planned
- - *(None)*
+
+![No Features Planned](https://img.shields.io/badge/_-No_Planned_Features-green?style=flat)
 
 ## Getting Started
 

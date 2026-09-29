@@ -68,31 +68,48 @@ glanceLibRegister(
         `;
         const check = async () => {
             try {
-                const fetchStart = performance.now();
-                const res = await fetch(config.url, {
+                let fetchStart = performance.now();
+                let res = await fetch(config.url, {
                     method: "HEAD",
+                    mode: "cors",
                     cache: "no-cache",
                     credentials: "include",
                     redirect: "manual",
                 });
-                const fetchDuration = performance.now() - fetchStart;
+                let fetchDuration = performance.now() - fetchStart;
+                if (res.status == 405) {
+                    fetchStart = performance.now();
+                    res = await fetch(config.url, {
+                        method: "GET",
+                        mode: "cors",
+                        cache: "no-cache",
+                        credentials: "include",
+                        redirect: "manual",
+                    });
+                    fetchDuration = performance.now() - fetchStart;
+                }
                 console.log(`[GlanceLib/LIOD] Fetched '${config.url}': `, res);
-                const status = res.status;
+                let status = res.status;
+                let statusText = HTTP_STATUS_TEXTS[status] || "Unknown";
+                if (["opaqueredirect"].includes(res.type)) {
+                    status = 307;
+                    statusText = "OK";
+                }
                 if (config.hideCodes.includes(status)) {
                     container.style.display = "none";
                     return;
                 }
                 container.style.display = "";
-                if (res.ok) {
+                if (status < 400) {
                     icon.innerHTML = iconSuccess;
                     text.innerHTML = `
-                        <li title="${status}">${HTTP_STATUS_TEXTS[status] || "Unknown"}</li>
+                        <li title="${status}">${statusText}</li>
                         <li>${Math.round(fetchDuration)}ms</li>
                     `;
                 } else {
                     icon.innerHTML = iconError;
                     text.innerHTML = `
-                        <li class="color-negative" title="${status}">${HTTP_STATUS_TEXTS[status]}</li>
+                        <li class="color-negative" title="${status}">${statusText}</li>
                     `;
                 }
             } catch (err) {
@@ -104,7 +121,7 @@ glanceLibRegister(
                 container.style.display = "";
                 icon.innerHTML = iconError;
                 text.innerHTML = `
-                    <li class="color-negative" title="${err.message}">Unknown Error</li>
+                    <li class="color-negative" title="${err.message}">ERROR</li>
                 `;
             }
         };

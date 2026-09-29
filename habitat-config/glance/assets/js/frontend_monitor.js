@@ -1,5 +1,6 @@
 (function () {
     const container = document.currentScript.closest('.widget');
+    console.log(container);
     if (!container) return;
     const config = {
         url: container.dataset.url,

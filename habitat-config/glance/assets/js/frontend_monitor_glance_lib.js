@@ -39,10 +39,6 @@ glanceLibRegister(
         };
         container.classList.add("glance-lib-femon", "widget", "widget-type-monitor");
         container.innerHTML = `
-            <div class="widget-header">
-                <span class="widget-title">${config.title}</span>
-                <span class="monitor-status-badge">Checking...</span>
-            </div>
             <div class="widget-content">
                 <ul class="dynamic-columns list-gap-20 list-with-separator">
                     <div class="monitor-site flex items-center gap-15">
@@ -50,8 +46,6 @@ glanceLibRegister(
                         <div class="grow min-width-0">
                             <a class="size-h3 color-highlight text-truncate block" href="${config.url}" target="_blank" rel="noreferrer" title="${config.title}">${config.title}</a>
                             <ul class="monitor-site-status-text list-horizontal-text">
-                                <li class="monitor-site-status-label" title=""></li>
-                                <li class="monitor-site-status-latency"></li>
                             </ul>
                         </div>
                         <div class="monitor-site-status-icon">
@@ -86,13 +80,13 @@ glanceLibRegister(
                 container.style.display = "";
                 if (res.ok) {
                     icon.innerHTML = iconSuccess;
-                    text.innerHTML += `
+                    text.innerHTML = `
                         <li title="${status}">${res.statusText}</li>
                         <li>${Math.round(fetchDuration)}ms</li>
                     `;
                 } else {
                     icon.innerHTML = iconError;
-                    text.innerHTML += `
+                    text.innerHTML = `
                         <li class="color-negative">${res.statusText}</li>
                     `;
                 }

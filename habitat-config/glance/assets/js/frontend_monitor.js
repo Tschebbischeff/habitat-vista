@@ -1,32 +1,7 @@
 glanceLibRegister(
     "FEMON", "Monitor connection to URL via frontend requests.",
 (dataset) => {
-    /*const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const container = entry.target;
-            if (entry.isIntersecting) {
-                if (!container.querySelector(".widget-type-monitor")) {
-                    const iframe = document.createElement("iframe");
-                    iframe.src = container.dataset.libLiodSrc;
-                    iframe.className = container.dataset.libLiodClasses;
-                    iframe.classList.add("glance-lib-femon");
-                    container.appendChild(iframe);
-                    console.log("iframe loaded");
-                }
-            } else {
-                const iframe = container.querySelector("iframe");
-                if (iframe) {
-                    iframe.remove();
-                    console.log("iframe unloaded");
-                }
-            }
-        });
-    }, {
-        root: null,
-        threshold: 0.1
-    });*/
     document.querySelectorAll("div[data-lib-femon]").forEach(container => {
-        // console.log("[GlanceLib/FEMON] Observing: ", elem);
         const config = {
             url: container.dataset.libFemonUrl,
             title: container.dataset.libFemonTitle || container.dataset.libFemonUrl,
@@ -88,7 +63,7 @@ glanceLibRegister(
                     });
                     fetchDuration = performance.now() - fetchStart;
                 }
-                console.log(`[GlanceLib/LIOD] Fetched '${config.url}': `, res);
+                // console.log(`[GlanceLib/LIOD] Fetched '${config.url}': `, res);
                 let status = res.status;
                 let statusText = HTTP_STATUS_TEXTS[status] || "Unknown";
                 if (["opaqueredirect"].includes(res.type)) {
@@ -127,6 +102,5 @@ glanceLibRegister(
         };
         check();
         setInterval(check, config.interval);
-        // observer.observe(elem);
     });
 });

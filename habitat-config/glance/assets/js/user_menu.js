@@ -3,7 +3,7 @@ const currentScript = document.currentScript.dataset;
 glanceLibRegister(
     "UserMenu", "Displays user menu on the far right of the nav bar",
 (dataset) => {
-    const navBar = document.querySelector("nav.nav");
+    const navBar = document.querySelector("nav.desktop-navigation");
     if (navBar) {
         const userMenu = document.createElement("div");
         userMenu.className = "glance-lib-usermenu";

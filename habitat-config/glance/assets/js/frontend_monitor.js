@@ -75,6 +75,7 @@ glanceLibRegister(
                     credentials: "include"
                 });
                 const fetchDuration = performance.now() - fetchStart;
+                console.log(`[GlanceLib/LIOD] Done checking '${config.url}': `, res);
                 const status = res.status;
                 if (config.hideCodes.includes(status)) {
                     container.style.display = "none";
@@ -102,7 +103,7 @@ glanceLibRegister(
                 container.style.display = "";
                 icon.innerHTML = iconError;
                 text.innerHTML = `
-                    <li class="color-negative">Unknown Error</li>
+                    <li class="color-negative" title="${err.message}">Unknown Error</li>
                 `;
             }
         };

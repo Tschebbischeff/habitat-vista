@@ -6,6 +6,7 @@ server:
   proxied: true
 document:
   head: |
+    <script src="/assets/js/constants.js"></script>
     <script src="/assets/js/glance_lib.js"></script>
     <script src="/assets/js/iframe_on_demand.js"></script>
     <script src="/assets/js/frontend_monitor.js"></script>

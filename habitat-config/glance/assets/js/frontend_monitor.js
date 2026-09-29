@@ -85,7 +85,7 @@ glanceLibRegister(
                 if (res.ok) {
                     icon.innerHTML = iconSuccess;
                     text.innerHTML = `
-                        <li title="${status}">${res.statusText}</li>
+                        <li title="${status}">${HTTP_STATUS_TEXTS[status] || "Unknown"}</li>
                         <li>${Math.round(fetchDuration)}ms</li>
                     `;
                 } else {

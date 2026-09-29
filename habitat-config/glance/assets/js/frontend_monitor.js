@@ -90,7 +90,7 @@ glanceLibRegister(
                 } else {
                     icon.innerHTML = iconError;
                     text.innerHTML = `
-                        <li class="color-negative">${res.statusText}</li>
+                        <li class="color-negative" title="${status}">${HTTP_STATUS_TEXTS[status]}</li>
                     `;
                 }
             } catch (err) {

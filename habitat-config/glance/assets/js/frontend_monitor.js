@@ -67,7 +67,6 @@ glanceLibRegister(
             </svg>
         `;
         const check = async () => {
-            console.log("[GlanceLib/LIOD] Checking: ", config.url);
             try {
                 const fetchStart = performance.now();
                 const res = await fetch(config.url, {
@@ -75,7 +74,6 @@ glanceLibRegister(
                     credentials: "include"
                 });
                 const fetchDuration = performance.now() - fetchStart;
-                console.log(`[GlanceLib/LIOD] Done checking '${config.url}': `, res);
                 const status = res.status;
                 if (config.hideCodes.includes(status)) {
                     container.style.display = "none";

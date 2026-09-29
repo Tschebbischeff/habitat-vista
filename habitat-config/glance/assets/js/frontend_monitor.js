@@ -101,7 +101,7 @@ glanceLibRegister(
                 console.log(`[GlanceLib/LIOD] Unknown Error checking '${config.url}': `, err);
                 container.style.display = "";
                 icon.innerHTML = iconError;
-                text.innerHTML += `
+                text.innerHTML = `
                     <li class="color-negative">Unknown Error</li>
                 `;
             }

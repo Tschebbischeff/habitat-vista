@@ -70,7 +70,10 @@ glanceLibRegister(
             console.log("[GlanceLib/LIOD] Checking: ", config.url);
             try {
                 const fetchStart = performance.now();
-                const res = await fetch(config.url, { cache: "no-cache" });
+                const res = await fetch(config.url, {
+                    cache: "no-cache",
+                    credentials: "include"
+                });
                 const fetchDuration = performance.now() - fetchStart;
                 const status = res.status;
                 if (config.hideCodes.includes(status)) {

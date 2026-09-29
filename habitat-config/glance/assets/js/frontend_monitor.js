@@ -70,8 +70,10 @@ glanceLibRegister(
             try {
                 const fetchStart = performance.now();
                 const res = await fetch(config.url, {
+                    method: "HEAD",
                     cache: "no-cache",
-                    credentials: "include"
+                    credentials: "include",
+                    redirect: "manual",
                 });
                 const fetchDuration = performance.now() - fetchStart;
                 console.log(`[GlanceLib/LIOD] Fetched '${config.url}': `, res);

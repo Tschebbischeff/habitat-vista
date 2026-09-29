@@ -74,6 +74,7 @@ glanceLibRegister(
                     credentials: "include"
                 });
                 const fetchDuration = performance.now() - fetchStart;
+                console.log(`[GlanceLib/LIOD] Fetched '${config.url}': `, res);
                 const status = res.status;
                 if (config.hideCodes.includes(status)) {
                     container.style.display = "none";
@@ -93,11 +94,11 @@ glanceLibRegister(
                     `;
                 }
             } catch (err) {
+                console.log(`[GlanceLib/LIOD] Unknown Error checking '${config.url}': `, err);
                 if (config.hideCodes.includes(0)) {
                     container.style.display = "none";
                     return;
                 }
-                console.log(`[GlanceLib/LIOD] Unknown Error checking '${config.url}': `, err);
                 container.style.display = "";
                 icon.innerHTML = iconError;
                 text.innerHTML = `

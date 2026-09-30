@@ -8,10 +8,14 @@ glanceLibRegister(
             title: container.dataset.libFemonTitle || container.dataset.libFemonUrl,
             interval: parseInt(container.dataset.libFemonInterval, 10) || 30000,
             icon: container.dataset.libFemonIcon,
-            hideCodes: (container.dataset.libFemonHideCodes || "")
+            hideCodes: (container.dataset.libFemonHideCodes || "403")
                 .split(",")
                 .map((c) => parseInt(c.trim(), 10))
-                .filter((c) => !isNaN(c))
+                .filter((c) => !isNaN(c)),
+            okCodes: (container.dataset.libFemonOkCodes || "307, 418")
+                .split(",")
+                .map((c) => parseInt(c.trim(), 10))
+                .filter((c) => !isNaN(c)),
         };
         container.classList.add("glance-lib-femon", "widget", "widget-type-monitor");
         container.innerHTML = `
@@ -72,12 +76,15 @@ glanceLibRegister(
                     status = 307;
                     statusText = "OK";
                 }
+                if (config.okCodes.includes(status)) {
+                    statusText = "OK";
+                }
                 if (config.hideCodes.includes(status)) {
                     container.style.display = "none";
                     return;
                 }
                 container.style.display = "";
-                if (status < 400) {
+                if (status < 400 || config.okCodes.includes(status)) {
                     icon.innerHTML = iconSuccess;
                     text.innerHTML = `
                         <li title="${status}">${statusText}</li>

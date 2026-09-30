@@ -74,3 +74,7 @@ div.glance-lib-usermenu-mobile a {
     flex-shrink: 0;
     line-height: var(--header-height);
 }
+
+div.glance-lib-femon.widget-type-monitor + div.glance-lib-femon.widget-type-monitor {
+    margin-top: calc(var(--widget-gap) / 2.0);
+}

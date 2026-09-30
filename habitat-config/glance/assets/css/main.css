@@ -12,7 +12,7 @@
 }
 
 :root:not([data-scheme=light]) .monitor-site:hover .monitor-site-icon.invert-img:not(.flat-icon) {
-    filter: invert(1);
+    filter: invert(1) grayscale(0);
 }
 
 :root:not([data-scheme=light]) .invert-img:not(.flat-icon) {

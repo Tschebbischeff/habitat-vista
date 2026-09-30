@@ -7,7 +7,8 @@ glanceLibRegister(
             checkUrl: container.dataset.libFemonCheckUrl || container.dataset.libFemonUrl,
             title: container.dataset.libFemonTitle || container.dataset.libFemonUrl,
             interval: parseInt(container.dataset.libFemonInterval, 10) || 30000,
-            icon: container.dataset.libFemonIcon,
+            icon: container.dataset.libFemonIcon || "",
+            iconAutoInvert: container.dataset.libFemonIconAutoInvert || false,
             hideCodes: (container.dataset.libFemonHideCodes || "403")
                 .split(",")
                 .map((c) => parseInt(c.trim(), 10))
@@ -22,7 +23,7 @@ glanceLibRegister(
             <div class="widget-content">
                 <ul class="dynamic-columns list-gap-20 list-with-separator">
                     <div class="monitor-site flex items-center gap-15">
-                        <img class="monitor-site-icon loaded finished-transition" src="${config.icon}" alt="" loading="lazy">
+                        <img class="monitor-site-icon loaded finished-transition${config.iconAutoInvert ? " flat-icon" : ""}" src="${config.icon}" alt="" loading="lazy">
                         <div class="grow min-width-0">
                             <a class="size-h3 color-highlight text-truncate block" href="${config.url}" target="_blank" rel="noreferrer" title="${config.title}">${config.title}</a>
                             <ul class="monitor-site-status-text list-horizontal-text">

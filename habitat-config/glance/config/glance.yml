@@ -11,7 +11,7 @@ document:
     <script src="/assets/js/iframe_on_demand.js"></script>
     <script src="/assets/js/frontend_monitor.js"></script>
     <script src="/assets/js/user_menu.js"
-      data-oidc-logout-url="https://authelia.${APP_HOST}/logout?rd=https%3A%2F%2F${APP_HOST}"
+      data-oidc-logout-url="https://${APP_AUTH_HOST}/logout?rd=https%3A%2F%2F${APP_HOST}"
     ></script>
 branding:
   custom-footer: |

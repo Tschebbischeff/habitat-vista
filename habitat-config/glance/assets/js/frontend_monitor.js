@@ -4,6 +4,7 @@ glanceLibRegister(
     document.querySelectorAll("div[data-lib-femon]").forEach(container => {
         const config = {
             url: container.dataset.libFemonUrl,
+            checkUrl: container.dataset.libFemonCheckUrl || container.dataset.libFemonUrl,
             title: container.dataset.libFemonTitle || container.dataset.libFemonUrl,
             interval: parseInt(container.dataset.libFemonInterval, 10) || 30000,
             icon: container.dataset.libFemonIcon,
@@ -21,6 +22,7 @@ glanceLibRegister(
                         <div class="grow min-width-0">
                             <a class="size-h3 color-highlight text-truncate block" href="${config.url}" target="_blank" rel="noreferrer" title="${config.title}">${config.title}</a>
                             <ul class="monitor-site-status-text list-horizontal-text">
+                                <li class="color-text-subdue">Fetching...</li>
                             </ul>
                         </div>
                         <div class="monitor-site-status-icon">
@@ -44,7 +46,7 @@ glanceLibRegister(
         const check = async () => {
             try {
                 let fetchStart = performance.now();
-                let res = await fetch(config.url, {
+                let res = await fetch(config.checkUrl, {
                     method: "HEAD",
                     mode: "cors",
                     cache: "no-cache",
@@ -54,7 +56,7 @@ glanceLibRegister(
                 let fetchDuration = performance.now() - fetchStart;
                 if (res.status == 405) {
                     fetchStart = performance.now();
-                    res = await fetch(config.url, {
+                    res = await fetch(config.checkUrl, {
                         method: "GET",
                         mode: "cors",
                         cache: "no-cache",
@@ -63,7 +65,7 @@ glanceLibRegister(
                     });
                     fetchDuration = performance.now() - fetchStart;
                 }
-                // console.log(`[GlanceLib/LIOD] Fetched '${config.url}': `, res);
+                // console.log(`[GlanceLib/LIOD] Fetched '${config.checkUrl}': `, res);
                 let status = res.status;
                 let statusText = HTTP_STATUS_TEXTS[status] || "Unknown";
                 if (["opaqueredirect"].includes(res.type)) {
@@ -88,7 +90,7 @@ glanceLibRegister(
                     `;
                 }
             } catch (err) {
-                console.log(`[GlanceLib/LIOD] Unknown Error checking '${config.url}': `, err);
+                console.log(`[GlanceLib/LIOD] Unknown Error checking '${config.checkUrl}': `, err);
                 if (config.hideCodes.includes(0)) {
                     container.style.display = "none";
                     return;

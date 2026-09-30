@@ -8,7 +8,7 @@ glanceLibRegister(
             title: container.dataset.libFemonTitle || container.dataset.libFemonUrl,
             interval: parseInt(container.dataset.libFemonInterval, 10) || 30000,
             icon: container.dataset.libFemonIcon || "",
-            iconAutoInvert: container.dataset.libFemonIconAutoInvert || false,
+            iconAutoInvert: (container.dataset.libFemonIconAutoInvert || "false") === "true",
             hideCodes: (container.dataset.libFemonHideCodes || "403")
                 .split(",")
                 .map((c) => parseInt(c.trim(), 10))

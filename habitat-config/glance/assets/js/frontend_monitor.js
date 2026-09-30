@@ -23,7 +23,7 @@ glanceLibRegister(
             <div class="widget-content">
                 <ul class="dynamic-columns list-gap-20 list-with-separator">
                     <div class="monitor-site flex items-center gap-15">
-                        <img class="monitor-site-icon loaded finished-transition${config.iconAutoInvert ? " flat-icon" : ""}" src="${config.icon}" alt="" loading="lazy">
+                        <img class="monitor-site-icon loaded finished-transition${config.iconAutoInvert ? " invert-img" : ""}" src="${config.icon}" alt="" loading="lazy">
                         <div class="grow min-width-0">
                             <a class="size-h3 color-highlight text-truncate block" href="${config.url}" target="_blank" rel="noreferrer" title="${config.title}">${config.title}</a>
                             <ul class="monitor-site-status-text list-horizontal-text">

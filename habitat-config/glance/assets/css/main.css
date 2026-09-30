@@ -7,11 +7,15 @@
     width: 100%;
 }
 
-:root:not([data-scheme=light]) .monitor-site-icon.invert-img {
+:root:not([data-scheme=light]) .monitor-site-icon.invert-img:not(.flat-icon) {
     filter: invert(1) grayscale(0.4);
 }
 
-:root:not([data-scheme=light]) .invert-img {
+:root:not([data-scheme=light]) .monitor-site:hover .monitor-site-icon.invert-img:not(.flat-icon) {
+    filter: invert(1);
+}
+
+:root:not([data-scheme=light]) .invert-img:not(.flat-icon) {
     filter: invert(1);
 }
 

@@ -42,7 +42,7 @@ services:
       - glance-assets:/habitat-config/target/glance/assets
 
   glance:
-    image: glanceapp/glance:latest
+    image: glanceapp/glance:${GLANCE_VERSION:?}
     container_name: ${APP_NAME_HOST}_glance
     restart: unless-stopped
     expose:
